@@ -39,8 +39,15 @@ module = GetParams("module")
 if module == "leerIni":
     # Modulo Leer ini
     ruta = GetParams('content')
-    config = configparser.ConfigParser()
-    configOpen = config.read(ruta)
+    variable = GetParams('variable')
+    try:
+        config = configparser.ConfigParser()
+        configOpen = config.read(ruta)
+        SetVar(variable, True)
+    except:
+        PrintException()
+        SetVar(variable, False)
+        raise Exception("Error al leer el archivo")
 
 if module == "obtenerDato":
     # Modulo Obtener Dato
