@@ -1,32 +1,32 @@
 # Control Ini
   
-.ini File Control  
+Control de Archivos .ini  
 
 *Read this in other languages: [English](README.md), [Portugues](README.pr.md), [Español](README.es.md).*
 
-## How to install this module
+## Como instalar este módulo
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
+__Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de Rocketbot.  
 
 
 
 ## Overview
 
 
-1. New Ini  
-create the ini file.
+1. Nuevo Ini  
+Crea un archivo ini.
 
-2. Read Ini  
-Open and read the ini file.
+2. Leer Ini  
+Abre y lee el archivo ini.
 
-3. Get Data  
-Get Data. Get the data according to the section and send it to the variable.
+3. Obtener Dato  
+Obtiene el dato segun la seccion y lo envia a la variable.
 
-4. Edit Data  
-Edit a data and a section indicated.
+4. Modificar Dato  
+Modifica un dato y una seccion indicada.
 
-5. Add Data  
-Add a data in a section indicated.  
+5. Añadir Dato  
+Añade un dato en una seccion indicada.  
 
 
 
@@ -37,8 +37,6 @@ Add a data in a section indicated.
 - windows
 - linux
 - docker
-
-### Dependencies
 
 ### License
   
