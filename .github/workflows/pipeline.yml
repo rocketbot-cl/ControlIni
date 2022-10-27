@@ -1,0 +1,24 @@
+name: Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install python 3.6.8 32-bit and pip
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6.8
+          architecture: x86
+      - name: Linter
+        run: |
+          pip install pylint
+          pylint --rcfile=.pylintrc --output-format=colorized --reports=n --score=n --disable=missing-docstring,invalid-name,too-many-arguments,too-many-locals,too-many-statements,too-many-branches,too-many-nested-blocks,too-many-instance-attributes,too-many-public-methods,too-many-lines,too-many-ancestors,too-many-return-statements,too-many-boolean-expressions,too-many-function-args,too-many-arguments,too-many-locals,too-many-statements,too-many-branches,too-many-nested-blocks,too-many-instance-attributes,too-many-public-methods,too-many-lines,too-many-ancestors,too-many-return-statements,too-many-boolean-expressions,too-many-function-args,too-many-arguments,too-many-locals,too-many-statements,too-many-branches,too-many-nested-blocks,too-many-instance-attributes,too-many-public-methods,too-many-lines,too-many-ancestors,too-many-return-statements,too-many-boolean-expressions,too-many-function-args,too-many-arguments,too-many-locals,too-many-statements,too-many-branches,too-many-nested-blocks,too-many-instance-attributes,too-many-public-methods,too-many-lines,too-many-ancestors,too-many-return-statements,too-many-boolean-expressions,too-many-function-args,too-many-arguments,too-many-locals,too-many-statements,too-many-branches,too-many-nested-blocks,too-many-instance-attributes,too-many-public-methods,too-many-lines,too-many-ancestors,too-many-return-statements,too-many-boolean-expressions,too-many-function-args,too-many-arguments,too-many-locals,too-many-statements,too-many-branches,too-many-nested-blocks,too-many-instance-attributes,too-many-public-methods,too-many-lines,too-many-ancestors,too-many-return-statements,too-many-boolean-expressions,too-many-function-args,too-many-arguments,too-many-locals,too-many-statements,too-many-branches,too-many-nested-blocks,too-many-instance-attributes,too-many-public-methods,too-many-lines,too-many
