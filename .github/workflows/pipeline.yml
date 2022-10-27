@@ -22,3 +22,7 @@ jobs:
         run: |
           pip install pylint
           pylint __init__.py --disable=invalid-name --output-format=colorized
+      - name: Features Test
+        run: |
+          pip install pytest
+          pytest tests\test_features.py
