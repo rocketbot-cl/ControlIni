@@ -1,10 +1,10 @@
 name: Deployment Pipeline
 
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize]
     branches:
-      - master
-
+      - qa  
 jobs:
   deploy:
     runs-on: windows-latest
@@ -26,3 +26,24 @@ jobs:
         run: |
           pip install pytest
           pytest tests\test_features.py
+      - name: Transition Jira issue
+        uses: atlassian/gajira-transition@master
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        with:
+          issue: ${{ github.event.pull_request.title }}.split()[0]
+          transition: "QA"
+          comment: "${{ github.event.pull_request.body }} - repo: ${{ github.event.repository.html_url }}"
+      - name: Accept and merge pull request to qa branch
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Merge pull request #${{ github.event.pull_request.number }} from ${{ github.event.pull_request.head.ref }}"
+          title: "Merge pull request #${{ github.event.pull_request.number }} from ${{ github.event.pull_request.head.ref }}"
+          body: "${{ github.event.pull_request.body }}"
+          branch: qa
+          base: qa
+          delete-branch: true
+         
