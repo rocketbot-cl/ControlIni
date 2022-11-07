@@ -35,7 +35,6 @@ jobs:
         with:
           issue: ${{ github.event.pull_request.title }}.split()[0]
           transition: "QA"
-          comment: "${{ github.event.pull_request.body }} - repo: ${{ github.event.repository.html_url }}"
       - name: Accept and merge pull request to qa branch
         uses: peter-evans/create-pull-request@v3
         with:
