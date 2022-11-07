@@ -53,7 +53,6 @@ if module == "leerIni":
     variable = GetParams('variable')
     try:
         MOD_CONTROLL_INI["ruta"] = ruta
-        print(MOD_CONTROLL_INI["ruta"])
         MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
         MOD_CONTROLL_INI["config"].read(ruta)
         SetVar(variable, True)
