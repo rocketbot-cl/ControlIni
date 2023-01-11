@@ -64,7 +64,7 @@ jobs:
             exit 1
         }
     - name: Merge Pull Request
-    - uses: hmarr/auto-approve-action@v3
+      uses: hmarr/auto-approve-action@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         number: 1
