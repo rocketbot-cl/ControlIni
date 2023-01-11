@@ -1,4 +1,4 @@
-name: Approve pull request
+ name: Approve pull request
 on:
   pull_request:
     branches:
@@ -21,43 +21,43 @@ jobs:
         pip install pytest
     - name: Lint with pylint
       run: |
-        if [ -d "tests" ]; then
-          pylint --rcfile=.pylintrc tests
-        fi
+        if (Test-Path -Path "tests") {
+            pylint --rcfile=.pylintrc tests
+        }
     - name: Run pytest
       run: |
-        if [ -d "tests" ]; then
-          pytest tests/
-        fi
+        if (Test-Path -Path "tests") {
+            pytest tests/
+        }
     - name: Check for required files and directories
       run: |
-        if [ -f "__init__.py" ]; then
-          echo "__init__.py found."
-        else
-          echo "__init__.py not found. Exiting."
-          exit 1
-        fi
-        if [ -f "package.json" ]; then
-          echo "package.json found."
-        else
-          echo "package.json not found. Exiting."
-          exit 1
-        fi
-        if [ -f "readme.md" ]; then
-          echo "readme.md found."
-        else
-          echo "readme.md not found. Exiting."
-          exit 1
-        fi
-        if [ -d "docs" ]; then
-          echo "docs directory found."
-        else
-          echo "docs directory not found. Exiting."
-          exit 1
-        fi
-        if [ -d "example" ]; then
-          echo "example directory found."
-        else
-          echo "example directory not found. Exiting."
-          exit 1
-        fi
+        if (Test-Path -Path "__init__.py") {
+            echo "__init__.py found."
+        } else {
+            echo "__init__.py not found. Exiting."
+            exit 1
+        }
+        if (Test-Path -Path "package.json") {
+            echo "package.json found."
+        } else {
+            echo "package.json not found. Exiting."
+            exit 1
+        }
+        if (Test-Path -Path "readme.md") {
+            echo "readme.md found."
+        } else {
+            echo "readme.md not found. Exiting."
+            exit 1
+        }
+        if (Test-Path -Path "docs") {
+            echo "docs directory found."
+        } else {
+            echo "docs directory not found. Exiting."
+            exit 1
+        }
+        if (Test-Path -Path "example") {
+            echo "example directory found."
+        } else {
+            echo "example directory not found. Exiting."
+            exit 1
+        }
