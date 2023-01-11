@@ -1,50 +1,63 @@
-name: Deployment Pipeline
-
+name: Approve pull request
 on:
   pull_request:
-    types: [opened, synchronize]
     branches:
-      - qa  
+      - qa
 jobs:
-  deploy:
+  build:
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Install python 3.6.8 32-bit and pip
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.6.8
-          architecture: x86
-      - name: Linter
-        run: |
-          pip install pylint
-          pylint __init__.py --disable=invalid-name --output-format=colorized
-      - name: Features Test
-        run: |
-          pip install pytest
-          pytest tests\test_features.py
-      - name: Login
-        uses: atlassian/gajira-login@master
-        env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-      - name: Transition Jira issue
-        uses: atlassian/gajira-transition@master
-        with:
-          issue: ${{ github.event.pull_request.title }}
-          transition: "QA"
-      - name: Accept and merge pull request to qa branch
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Merge pull request #${{ github.event.pull_request.number }} from ${{ github.event.pull_request.head.ref }}"
-          title: "Merge pull request #${{ github.event.pull_request.number }} from ${{ github.event.pull_request.head.ref }}"
-          body: "${{ github.event.pull_request.body }}"
-          branch: qa
-          base: qa
-          delete-branch: true
-         
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.10 64-bit
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10
+        architecture: x64
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+        pip install pytest
+    - name: Lint with pylint
+      run: |
+        if [ -d "tests" ]; then
+          pylint --rcfile=.pylintrc tests
+        fi
+    - name: Run pytest
+      run: |
+        if [ -d "tests" ]; then
+          pytest tests/
+        fi
+    - name: Check for required files and directories
+      run: |
+        if [ -f "__init__.py" ]; then
+          echo "__init__.py found."
+        else
+          echo "__init__.py not found. Exiting."
+          exit 1
+        fi
+        if [ -f "package.json" ]; then
+          echo "package.json found."
+        else
+          echo "package.json not found. Exiting."
+          exit 1
+        fi
+        if [ -f "readme.md" ]; then
+          echo "readme.md found."
+        else
+          echo "readme.md not found. Exiting."
+          exit 1
+        fi
+        if [ -d "docs" ]; then
+          echo "docs directory found."
+        else
+          echo "docs directory not found. Exiting."
+          exit 1
+        fi
+        if [ -d "example" ]; then
+          echo "example directory found."
+        else
+          echo "example directory not found. Exiting."
+          exit 1
+        fi
