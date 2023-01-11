@@ -61,3 +61,13 @@ jobs:
             echo "example directory not found. Exiting."
             exit 1
         }
+    - name: Approve pull request
+      if: success()
+      uses: github-actions/github-script@v3
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          pull_request = context.payload.pull_request
+          if (pull_request) {
+              pull_request.reviews.create({event: "APPROVE"})
+          }
