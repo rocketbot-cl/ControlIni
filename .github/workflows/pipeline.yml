@@ -1,4 +1,4 @@
- name: Approve pull request
+name: Approve pull request
 on:
   pull_request:
     branches:
