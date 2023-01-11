@@ -63,7 +63,7 @@ jobs:
         }
     - name: Approve pull request
       if: success()
-      uses: peter-evans/create-pull-request-review@v2
+      uses: peter-evans/create-pull-request-review@v4
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         event: APPROVE
