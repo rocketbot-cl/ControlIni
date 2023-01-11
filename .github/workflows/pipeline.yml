@@ -61,10 +61,10 @@ jobs:
             echo "example directory not found. Exiting."
             exit 1
         }
-    - name: Approve pull request
-      if: success()
-      uses: hmarr/auto-approve-action@v3
+    - name: Merge Pull Request
+      uses: juliangruber/merge-pull-request-action@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        event: APPROVE
-        message: 'Automatically approved by the action'
+        number: 1
+        method: squash
+        repo: juliangruber/octokit-action
