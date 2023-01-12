@@ -64,4 +64,4 @@ jobs:
             exit 1
         }
     - name: Approve Pull Request
-      uses: reitermarkus/automerge@v2.2.0
+      uses: hmarr/auto-approve-action@v3.1.0
