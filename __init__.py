@@ -40,8 +40,6 @@ except NameError:
     MOD_CONTROLL_INI = {}
 
 
-
-
 #Obtengo el modulo que fueron invocados
 
 module = GetParams("module")
