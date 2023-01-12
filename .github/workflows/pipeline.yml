@@ -64,7 +64,6 @@ jobs:
             exit 1
         }
     - name: Approve Pull Request
-      uses: AndrewMusgrave/automatic-pull-request-review@0.0.2
+      uses: juliangruber/approve-pull-request-action@v2
       with:
-        event: APPROVE
-        body: "Approved by Actions"
+        token: ${{ secrets.GITHUB_TOKEN }}
