@@ -6,8 +6,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    permissions:
-      pull-requests: write
+    permissions: write-all
+      
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
             exit 1
         }
     - name: Approve Pull Request
-      uses: juliangruber/approve-pull-request-action@v2.0.0
+      uses: AndrewMusgrave/automatic-pull-request-review@0.0.2
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        number: 1
+        event: APPROVE
+        body: "Approved by Actions"
