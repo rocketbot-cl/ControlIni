@@ -68,3 +68,4 @@ jobs:
       with:
         event: APPROVE
         body: "Approved by Actions"
+        github-token: ${{ secrets.GITHUB_TOKEN }}
