@@ -1,10 +1,15 @@
 {
     "author":"Mijahil Franchi",
-    "description": "Control de Archivos .ini",
+    "description": "Este módulo permite crear, leer, modificar u obtener valores de un archivo .ini",
+    "description_lang": {
+        "en": "This module allows you to create, read, modify or get values from a .ini file",
+        "es": "Este módulo permite crear, leer, modificar u obtener valores de un archivo .ini",
+        "pr": "Este módulo permite criar, ler, modificar ou obter valores de um arquivo .ini"
+    },
     "disclaimer":"THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-    "version":"1.1.0",
+    "version":"1.2.0",
     "license": "MIT",
-    "homepage":"http://rockertbot.cl",
+    "homepage":"http://rocketbot.com",
     "linux": true,
     "windows":true,
     "mac":false,
@@ -21,19 +26,19 @@
         {
             "en": {
                 "title": "New Ini",
-                "description": "create the ini file.",
+                "description": "This commands creates a new ini file in the specified path.",
                 "title_options": null,
                 "options":null
             },
             "es": {
                 "title": "Nuevo Ini",
-                "description": "Crea un archivo ini.",
+                "description": "Este comando crea un nuevo archivo ini en la ruta especificada.",
                 "title_options": null,
                 "options":null
             },
             "pr": {
                 "title": "Novo Ini",
-                "description": "Cria um arquivo ini.",
+                "description": "Este comando cria um novo arquivo ini no caminho especificado.",
                 "title_options": null,
                 "options":null
             },
@@ -103,19 +108,19 @@
         {
             "en": {
                 "title": "Read Ini",
-                "description": "Open and read the ini file.",
+                "description": "This command opens and reads the ini file from the specified path.",
                 "title_options": null,
                 "options":null
             },
             "es": {
                 "title": "Leer Ini",
-                "description": "Abre y lee el archivo ini.",
+                "description": "Este comando abre y lee el archivo ini desde la ruta especificada.",
                 "title_options": null,
                 "options":null
             },
             "pr": {
                 "title": "Ler Ini",
-                "description": "Abre e lê o arquivo ini.",
+                "description": "Este comando abre e lê o arquivo ini do caminho especificado.",
                 "title_options": null,
                 "options":null
             },
@@ -139,6 +144,7 @@
                             "en": "Path of the ini file that will be read",
                             "pr": "Caminho do arquivo ini que será lido"
                         },
+                        "extensions": "ini",
                         "id": "content",
                         "css": "col-md-12"
                     },
@@ -185,19 +191,19 @@
         {
             "en": {
                 "title": "Get Data",
-                "description": "Get Data. Get the data according to the section and send it to the variable.",
+                "description": "This command gets the data from the section and store it in a Rocketbot variable.",
                 "title_options": null,
                 "options":null
             },
             "es": {
                 "title": "Obtener Dato",
-                "description": "Obtiene el dato segun la seccion y lo envia a la variable.",
+                "description": "Este comando obtiene el dato de la sección y lo almacena en una variable de Rocketbot.",
                 "title_options": null,
                 "options":null
             },
             "pr": {
                 "title": "Obter Dado",
-                "description": "Obter o dado de acordo com a seção e enviá-lo para a variável.",
+                "description": "Este comando obtém os dados da seção e os armazena em uma variável Rocketbot.",
                 "title_options": null,
                 "options":null
             },
@@ -206,11 +212,7 @@
                 "inputs": [
                     {
                         "type": "input",
-                        "placeholder": {
-                            "es": "Seccion donde se encutra el dato. Por ejemplo: [SECTION]",
-                            "en": "Section where the data is entered. For example: [SECTION]",
-                            "pr": "Seção onde os dados são inseridos. Por exemplo: [SECTION]"
-                        },
+                        "placeholder": "SECTION",
                         "title": {
                             "es": "Seccion:",
                             "en": "Section:",
@@ -221,7 +223,33 @@
                             "en": "Section where the data we want to obtain is located",
                             "pr": "Seção onde os dados que desejamos obter estão localizados"
                         },
+                        "help": {
+                            "es": "Seccion donde se encuentra el dato. Debe ir sin [].",
+                            "en": "Section where the data is entered. It must go without [].",
+                            "pr": "Seção onde os dados são inseridos. Deve ir sem []."
+                        },
                         "id": "idseccion",
+                        "css": "col-md-12"
+                    },
+                    {
+                        "type": "input",
+                        "placeholder": "data",
+                        "title": {
+                            "es": "Dato:",
+                            "en": "Data:",
+                            "pr": "Dados:"
+                        },
+                        "description": {
+                            "es": "Nombre del dato que se desea obtener",
+                            "en": "Name of the data that wants to be obtained",
+                            "pr": "Nome dos dados que deseja obter"
+                        },
+                        "help": {
+                            "es": "Dato que se desea obtener. Debe ir sin =.",
+                            "en": "Data that wants to be obtained. It must go without =.",
+                            "pr": "Dados que deseja obter. Deve ir sem =."
+                        },
+                        "id": "iddato",
                         "css": "col-md-12"
                     },
                     {
@@ -267,19 +295,19 @@
         {
             "es": {
                 "title": "Modificar Dato",
-                "description": "Modifica un dato y una seccion indicada.",
+                "description": "Este comando permite modificar el dato del ini abierto.",
                 "title_options": null,
                 "options":null
             },
             "en": {
                 "title": "Edit Data",
-                "description": "Edit a data and a section indicated.",
+                "description": "This command allows you to modify the data of the open ini.",
                 "title_options": null,
                 "options":null
             },
             "pr": {
                 "title": "Editar Dado",
-                "description": "Edita um dado e uma seção indicada.",
+                "description": "Este comando permite modificar o dado do ini aberto.",
                 "title_options": null,
                 "options":null
             },
@@ -288,40 +316,42 @@
                 "inputs": [
                     {
                         "type": "input",
-                        "placeholder": {
-                            "es": "Seccion donde se encutra el dato. Por ejemplo: [SECTION]",
-                            "en": "Section where the data is entered. For example: [SECTION]",
-                            "pr": "Seção onde os dados são inseridos. Por exemplo: [SECTION]"
-                        },
+                        "placeholder": "SECTION",
                         "title": {
                             "es": "Seccion:",
                             "en": "Section:",
                             "pr": "Seção:"
                         },
                         "description": {
-                            "es": "Seccion donde se encuentra el dato a modificar.",
-                            "en": "Section where the data to be modified is located.",
-                            "pr": "Seção onde os dados a serem modificados estão localizados."
+                            "es": "Seccion donde se encuentra el dato que deseamos editar",
+                            "en": "Section where the data we want to edit is located",
+                            "pr": "Seção onde os dados que desejamos editar estão localizados"
+                        },
+                        "help": {
+                            "es": "Seccion donde se encuentra el dato. Debe ir sin [].",
+                            "en": "Section where the data is entered. It must go without [].",
+                            "pr": "Seção onde os dados são inseridos. Deve ir sem []."
                         },
                         "id": "idseccion",
                         "css": "col-md-12"
                     },
                     {
                         "type": "input",
-                        "placeholder": {
-                            "es": "Nombre de el dato en el Ini. Por ejemplo: nombre=",
-                            "en": "Name of the data in the Ini. For example: name=",
-                            "pr": "Nome do dado no Ini. Por exemplo: nome="
-                        },
+                        "placeholder": "data",
                         "title": {
                             "es": "Dato:",
                             "en": "Data:",
-                            "pr": "Dado:"
+                            "pr": "Dados:"
                         },
                         "description": {
-                            "es": "Nombre del dato a modificar.",
-                            "en": "Name of the data to modify.",
-                            "pr": "Nome dos dados a serem modificados."
+                            "es": "Dato que se desea editar.",
+                            "en": "Data that wants to be edited.",
+                            "pr": "Dados que deseja editar."
+                        },
+                        "help": {
+                            "es": "Dato que se desea editar. Debe ir sin =.",
+                            "en": "Data that wants to be edited. It must go without =.",
+                            "pr": "Dados que deseja editar. Deve ir sem =."
                         },
                         "id": "iddato",
                         "css": "col-md-12"
@@ -364,19 +394,19 @@
         {
             "es": {
                 "title": "Añadir Dato",
-                "description": "Añade un dato en una seccion indicada.",
+                "description": "Este comando añade un dato en una sección indicada.",
                 "title_options": null,
                 "options":null
             },
             "en": {
                 "title": "Add Data",
-                "description": "Add a data in a section indicated.",
+                "description": "This command adds a data in a section indicated.",
                 "title_options": null,
                 "options":null
             },
             "pr": {
                 "title": "Adicionar Dado",
-                "description": "Adiciona um dado em uma seção indicada.",
+                "description": "Este comando adiciona um dado em uma seção indicada.",
                 "title_options": null,
                 "options":null
             },
@@ -385,40 +415,42 @@
                 "inputs": [
                     {
                         "type": "input",
-                        "placeholder": {
-                            "es": "Seccion donde se encuentra el dato. Por ejemplo: [SECTION]",
-                            "en": "Section where the data is. For example: [SECTION]",
-                            "pr": "Seção onde o dado está. Por exemplo: [SECTION]"
-                        },
+                        "placeholder": "SECTION",
                         "title": {
                             "es": "Seccion:",
                             "en": "Section:",
                             "pr": "Seção:"
                         },
                         "description": {
-                            "es": "Seccion donde se encuentra el dato en el archivo ini.",
-                            "en": "Section where the data is in the ini file.",
-                            "pr": "Seção onde o dado está no arquivo ini."
+                            "es": "Seccion donde se ubicará el dato que deseamos agregar.",
+                            "en": "Section where the data we want to add will be located.",
+                            "pr": "Seção onde os dados que desejamos adicionar estarão localizados."
+                        },
+                        "help": {
+                            "es": "Seccion donde se agregará el dato. Debe ir sin [].",
+                            "en": "Section where the data will be added. It must go without [].",
+                            "pr": "Seção onde os dados serão adicionados. Deve ir sem []."
                         },
                         "id": "idseccion",
                         "css": "col-md-12"
                     },
                     {
                         "type": "input",
-                        "placeholder": {
-                            "es": "Nombre del dato en el Ini. Por ejemplo: nombre=",
-                            "en": "Name of the data in the Ini. For example: name=",
-                            "pr": "Nome do dado no Ini. Por exemplo: nome="
-                        },
+                        "placeholder": "data",
                         "title": {
                             "es": "Dato:",
                             "en": "Data:",
-                            "pr": "Dado:"
+                            "pr": "Dados:"
                         },
                         "description": {
-                            "es": "Nombre del dato en el archivo ini.",
-                            "en": "Name of the data in the ini file.",
-                            "pr": "Nome do dado no arquivo ini."
+                            "es": "Dato que se desea agregar.",
+                            "en": "Data that wants to be added.",
+                            "pr": "Dados que deseja adicionar."
+                        },
+                        "help": {
+                            "es": "Dato que se desea agregar. Debe ir sin =.",
+                            "en": "Data that wants to be added. It must go without =.",
+                            "pr": "Dados que deseja adicionar. Deve ir sem =."
                         },
                         "id": "iddato",
                         "css": "col-md-12"
