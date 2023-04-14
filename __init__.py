@@ -1,6 +1,7 @@
 # coding: utf-8
-"""
-Base para desarrollo de modulos externos.
+# pylint: disable=invalid-name
+"""Base para desarrollo de modulos externos.
+
 Para obtener el modulo/Funcion que se esta llamando:
      GetParams("module")
 
@@ -17,73 +18,94 @@ Para obtener una variable de Rocketbot:
 Para obtener la Opcion seleccionada:
     opcion = GetParams("option")
 
-
 Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
-    
     pip install <package> -t .
 
 """
 import configparser
-global config
-global configOpen
-global ruta
+import traceback
 
-"""
-    Obtengo el modulo que fueron invocados
-"""
+global MOD_CONTROLL_INI #pylint: disable=global-at-module-level
+# global config
+# global configOpen
+# global ruta
+
+GetParams = GetParams #pylint: disable=undefined-variable,self-assigning-variable
+SetVar = SetVar #pylint: disable=undefined-variable,self-assigning-variable
+PrintException = PrintException #pylint: disable=undefined-variable,self-assigning-variable
+
+try:
+    if not MOD_CONTROLL_INI: #pylint: disable=used-before-assignment
+        MOD_CONTROLL_INI = {}
+except NameError:
+    MOD_CONTROLL_INI = {}
+
+
+#Obtengo el modulo que fueron invocados
+
 module = GetParams("module")
 
-"""
-    Resuelvo catpcha tipo reCaptchav2
-"""
+
 if module == "leerIni":
     # Modulo Leer ini
     ruta = GetParams('content')
     variable = GetParams('variable')
     try:
-        config = configparser.ConfigParser()
-        configOpen = config.read(ruta)
+        MOD_CONTROLL_INI["ruta"] = ruta
+        MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
+        MOD_CONTROLL_INI["config"].read(ruta)
+        
         SetVar(variable, True)
-    except:
+    except Exception as e:
         PrintException()
         SetVar(variable, False)
-        raise Exception("Error al leer el archivo")
+        raise e
 
 if module == "obtenerDato":
     # Modulo Obtener Dato
     seccion = GetParams('idseccion')
     dato = GetParams('iddato')
     var = GetParams('idvar')
-
-    print(config)
-    obtenido = config[seccion][dato]
-    SetVar(var, obtenido)
+    try:
+        config = MOD_CONTROLL_INI["config"]
+        secciones = config.sections()
+        print("Secciones: ", secciones)
+        obtenido = config[seccion][dato]
+        result = obtenido.encode('iso-8859-1').decode('utf-8')
+        SetVar(var, result)
+        
+    except Exception as e:
+        traceback.print_exc()
+        PrintException()
+        SetVar(var, False)
+        raise e
 
 if module == "anadirDato":
     # Modulo Añadir dato
+    config = MOD_CONTROLL_INI["config"]
+    ruta = MOD_CONTROLL_INI["ruta"]
     secciones = config.sections()
+
     seccion = GetParams('idseccion')
     dato = GetParams('iddato')
     contenido = GetParams('idcontent')
 
-    print(secciones)
-
     if seccion == "DEFAULT":
         config.set(seccion, dato, contenido)
-        with open(ruta, 'w') as configfile:
+        with open(ruta, 'w', encoding='latin-1') as configfile:
             config.write(configfile)
     else:
         if seccion in secciones:
             # Tiene esta seccion
             config.set(seccion, dato, contenido)
-            with open(ruta, 'w') as configfile:
+            with open(ruta, 'w', encoding='latin-1') as configfile:
                 config.write(configfile)
         else:
             # NO Tiene esta seccion, se va a crear
             config = configparser.RawConfigParser()
             config.add_section(seccion)
             config.set(seccion, dato, contenido)
-            with open(ruta, 'a') as configfile:
+            with open(ruta, 'a', encoding='latin-1') as configfile:
                 config.write(configfile)
 
 if module == "modificaDato":
@@ -91,10 +113,19 @@ if module == "modificaDato":
     seccion = GetParams('idseccion')
     dato = GetParams('iddato')
     contenido = GetParams('idcontent')
+    try:
+        config = MOD_CONTROLL_INI["config"]
+        ruta = MOD_CONTROLL_INI["ruta"]
 
-    config.set(seccion, dato, contenido)
-    with open(ruta, 'w') as configfile:
-        config.write(configfile)
+        config.set(seccion, dato, contenido)
+
+        with open(ruta, 'w', encoding='latin-1') as configfile:
+            config.write(configfile)
+
+    except Exception as e:
+        PrintException()
+        SetVar(var, False)
+        raise e
 
 if module == "nuevoIni":
     # Modulo que crea un nuevo Ini
@@ -105,5 +136,5 @@ if module == "nuevoIni":
 
     config = configparser.ConfigParser()
     config['DEFAULT'] = {}
-    with open(archivo, 'w') as configfile:
+    with open(archivo, 'w', encoding='latin-1') as configfile:
         config.write(configfile)
