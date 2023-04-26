@@ -1,32 +1,33 @@
 # Control Ini
   
-Controle de arquivos .ini
+Este módulo permite criar, ler, modificar ou obter valores de um arquivo .ini 
 
-*Read this in other languages: [English](README.md), [Portugues](README.pr.md), [Español](README.es.md).*
+Read this in other languages: [English](Readme.md), [Español](Readme.es.md), [Português](Readme.pr.md)
 
 ## Como instalar este módulo
   
-__Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
-
+A instalação pode ser:
+1. manual: __Baixe__ o arquivo .zip e descompacte-o na pasta de módulos. O nome da pasta deve ser o mesmo que o nome do módulo e dentro dele deve ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, exemplo e libs. Se tiver o aplicativo aberto, atualize o navegador para poder utilizar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita encontrará a seção **Addons**, selecione **Install Mods**, encontre o módulo desejado e pressione instalar.
 
 
 ## Overview
 
 
 1. Novo Ini  
-Cria um arquivo ini.
+Este comando cria um novo arquivo ini no caminho especificado.
 
 2. Ler Ini  
-Abre e lê o arquivo ini.
+Este comando abre e lê o arquivo ini do caminho especificado.
 
 3. Obter Dado  
-Obter o dado de acordo com a seção e enviá-lo para a variável.
+Este comando obtém os dados da seção e os armazena em uma variável Rocketbot.
 
 4. Editar Dado  
-Edita um dado e uma seção indicada.
+Este comando permite modificar o dado do ini aberto.
 
 5. Adicionar Dado  
-Adiciona um dado em uma seção indicada.  
+Este comando adiciona um dado em uma seção indicada.  
 
 
 

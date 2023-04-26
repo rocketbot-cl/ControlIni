@@ -1,14 +1,15 @@
 # Control Ini
   
-Controle de arquivos .ini  
-  
-*Read this in other languages: [English](Manual_ControlIni.md.md), [Portugues](Manual_ControlIni.pr.md), [Español](Manual_ControlIni.es.md).*
+Este módulo permite criar, ler, modificar ou obter valores de um arquivo .ini
+
+Read this in other languages: [English](Manual_ControlIni.md), [Español](Manual_ControlIni.es.md), [Português](Manual_ControlIni.pr.md)
   
 ![banner](imgs/Banner_ControlIni.png)
-
 ## Como instalar este módulo
   
-__Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
+A instalação pode ser:
+1. manual: __Baixe__ o arquivo .zip e descompacte-o na pasta de módulos. O nome da pasta deve ser o mesmo que o nome do módulo e dentro dele deve ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, exemplo e libs. Se tiver o aplicativo aberto, atualize o navegador para poder utilizar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita encontrará a seção **Addons**, selecione **Install Mods**, encontre o módulo desejado e pressione instalar.
 
 
 
@@ -16,7 +17,7 @@ __Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot
 
 ### Novo Ini
   
-Cria um arquivo ini.
+Este comando cria um novo arquivo ini no caminho especificado.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Caminho onde o arquivo será localizado|Caminho onde o arquivo ini criado será localizado.|C:/Users/usuario/Desktop|
@@ -24,7 +25,7 @@ Cria um arquivo ini.
 
 ### Ler Ini
   
-Abre e lê o arquivo ini.
+Este comando abre e lê o arquivo ini do caminho especificado.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Caminho do arquivo ini|Caminho do arquivo ini que será lido|C:/Users/User/Desktop/arquivo.ini|
@@ -32,26 +33,27 @@ Abre e lê o arquivo ini.
 
 ### Obter Dado
   
-Obter o dado de acordo com a seção e enviá-lo para a variável.
+Este comando obtém os dados da seção e os armazena em uma variável Rocketbot.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|Seção|Seção onde os dados que desejamos obter estão localizados|Seção onde os dados são inseridos. Por exemplo: [SECTION]|
+|Seção|Seção onde os dados que desejamos obter estão localizados|SECTION|
+|Dados|Nome dos dados que deseja obter|data|
 |Variável|Variável onde o resultado da operação será armazenado|resultado|
 
 ### Editar Dado
   
-Edita um dado e uma seção indicada.
+Este comando permite modificar o dado do ini aberto.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|Seção|Seção onde os dados a serem modificados estão localizados.|Seção onde os dados são inseridos. Por exemplo: [SECTION]|
-|Dado|Nome dos dados a serem modificados.|Nome do dado no Ini. Por exemplo: nome=|
+|Seção|Seção onde os dados que desejamos editar estão localizados|SECTION|
+|Dados|Dados que deseja editar.|data|
 |Conteúdo|Novo conteúdo que o dado do ini terá.|Conteúdo da variável.|
 
 ### Adicionar Dado
   
-Adiciona um dado em uma seção indicada.
+Este comando adiciona um dado em uma seção indicada.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|Seção|Seção onde o dado está no arquivo ini.|Seção onde o dado está. Por exemplo: [SECTION]|
-|Dado|Nome do dado no arquivo ini.|Nome do dado no Ini. Por exemplo: nome=|
+|Seção|Seção onde os dados que desejamos adicionar estarão localizados.|SECTION|
+|Dados|Dados que deseja adicionar.|data|
 |Conteúdo|Conteúdo da variável que será adicionada ao arquivo ini.|Conteúdo da variável.|
