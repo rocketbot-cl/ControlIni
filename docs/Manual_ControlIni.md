@@ -57,3 +57,4 @@ This command adds a data in a section indicated.
 |Section|Section where the data we want to add will be located.|SECTION|
 |Data|Data that wants to be added.|data|
 |Content|Content of the variable that will be added to the ini file.|Content of the variable.|
+
