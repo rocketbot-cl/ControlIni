@@ -1,16 +1,15 @@
 # Control Ini
   
-This module allows you to create, read, modify or get values from a .ini file.
+This module allows you to create, read, modify or get values from a .ini file  
 
-Read this in other languages: [English](Manual_ControlIni.md), [Español](Manual_ControlIni.es.md), [Português](Manual_ControlIni.pr.md)
+*Read this in other languages: [English](Manual_ControlIni.md), [Português](Manual_ControlIni.pr.md), [Español](Manual_ControlIni.es.md)*
   
 ![banner](imgs/Banner_ControlIni.png)
 ## How to install this module
   
-Installation can be:
-1. Manual: __Download__ the .zip file and unzip it in the modules folder. The name of the folder must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh the browser to be able to use the new module.
-2. Automatic: When you enter Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, find the desired module and press install.  
-
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 ## Description of the commands
@@ -38,6 +37,14 @@ This command gets the data from the section and store it in a Rocketbot variable
 | --- | --- | --- |
 |Section|Section where the data we want to obtain is located|SECTION|
 |Data|Name of the data that wants to be obtained|data|
+|Variable|Variable where the result of the operation will be stored|result|
+
+### Get All Data
+  
+This command gets the all data from the selected section and stores it in a Rocketbot variable in a dictionary format.
+|Parameters|Description|example|
+| --- | --- | --- |
+|Section|Section where the data we want to obtain are located|SECTION|
 |Variable|Variable where the result of the operation will be stored|result|
 
 ### Edit Data
