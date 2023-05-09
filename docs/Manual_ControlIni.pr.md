@@ -1,16 +1,15 @@
 # Control Ini
   
-Este módulo permite criar, ler, modificar ou obter valores de um arquivo .ini
+Este módulo permite criar, ler, modificar ou obter valores de um arquivo .ini  
 
-Read this in other languages: [English](Manual_ControlIni.md), [Español](Manual_ControlIni.es.md), [Português](Manual_ControlIni.pr.md)
+*Read this in other languages: [English](Manual_ControlIni.md), [Português](Manual_ControlIni.pr.md), [Español](Manual_ControlIni.es.md)*
   
-![banner](imgs/Banner_ControlIni.png)
+![banner](imgs/Banner_ControlIni.png o jpg)
 ## Como instalar este módulo
   
-A instalação pode ser:
-1. manual: __Baixe__ o arquivo .zip e descompacte-o na pasta de módulos. O nome da pasta deve ser o mesmo que o nome do módulo e dentro dele deve ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, exemplo e libs. Se tiver o aplicativo aberto, atualize o navegador para poder utilizar o novo módulo.
-2. Automático: Ao entrar no Rocketbot Studio na margem direita encontrará a seção **Addons**, selecione **Install Mods**, encontre o módulo desejado e pressione instalar.
-
+Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
+1. Manual: __Baixe__ o arquivo .zip e descompacte-o na pasta módulos. O nome da pasta deve ser o mesmo do módulo e dentro dela devem ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, example e libs. Se você tiver o aplicativo aberto, atualize seu navegador para poder usar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita você encontrará a seção **Addons**, selecione **Install Mods**, procure o módulo desejado e aperte instalar.  
 
 
 ## Descrição do comando
@@ -38,6 +37,14 @@ Este comando obtém os dados da seção e os armazena em uma variável Rocketbot
 | --- | --- | --- |
 |Seção|Seção onde os dados que desejamos obter estão localizados|SECTION|
 |Dados|Nome dos dados que deseja obter|data|
+|Variável|Variável onde o resultado da operação será armazenado|resultado|
+
+### Obter todos os dados
+  
+Este comando obtém todos os dados da seção selecionada e os armazena em uma variável Rocketbot em formato de dicionário.
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Seção|Seção onde os dados que queremos obter estão localizados|SECTION|
 |Variável|Variável onde o resultado da operação será armazenado|resultado|
 
 ### Editar Dado
