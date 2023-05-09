@@ -94,10 +94,10 @@ if module == "obtenerTodosDatos":
         seccion_items = config.items(seccion)
         seccion_dict = dict(seccion_items)
         SetVar(var, seccion_dict)
-    except Exception as e:
+    except:
         PrintException()
         SetVar(var, False)
-        raise f"Error al obtener todos los datos de la seccion {seccion}"
+        raise Exception(f"Error al obtener todos los datos de la seccion {seccion}")
 
 if module == "anadirDato":
     # Modulo Añadir dato
