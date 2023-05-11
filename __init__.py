@@ -53,6 +53,7 @@ if module == "leerIni":
     try:
         MOD_CONTROLL_INI["ruta"] = ruta
         MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
+        MOD_CONTROLL_INI["config"].optionxform = str
         MOD_CONTROLL_INI["config"].read(ruta)
         
         SetVar(variable, True)
