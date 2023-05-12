@@ -53,6 +53,7 @@ if module == "leerIni":
     try:
         MOD_CONTROLL_INI["ruta"] = ruta
         MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
+        MOD_CONTROLL_INI["config"].optionxform = str
         MOD_CONTROLL_INI["config"].read(ruta)
         
         SetVar(variable, True)
@@ -71,7 +72,10 @@ if module == "obtenerDato":
         secciones = config.sections()
         print("Secciones: ", secciones)
         obtenido = config[seccion][dato]
-        result = obtenido.encode('iso-8859-1').decode('utf-8')
+        try:
+            result = obtenido.encode('iso-8859-1').decode('utf-8')
+        except:
+            result = obtenido
         SetVar(var, result)
         
     except Exception as e:
@@ -79,6 +83,22 @@ if module == "obtenerDato":
         PrintException()
         SetVar(var, False)
         raise e
+    
+if module == "obtenerTodosDatos":
+    seccion = GetParams('idseccion')
+    var = GetParams('idvar')
+
+    try:
+        config = MOD_CONTROLL_INI["config"]
+        secciones = config.sections()
+        print("Secciones: ", secciones)
+        seccion_items = config.items(seccion)
+        seccion_dict = dict(seccion_items)
+        SetVar(var, seccion_dict)
+    except:
+        PrintException()
+        SetVar(var, False)
+        raise Exception(f"Error al obtener todos los datos de la seccion {seccion}")
 
 if module == "anadirDato":
     # Modulo Añadir dato
