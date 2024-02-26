@@ -54,7 +54,7 @@ if module == "leerIni":
         MOD_CONTROLL_INI["ruta"] = ruta
         MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
         MOD_CONTROLL_INI["config"].optionxform = str
-        MOD_CONTROLL_INI["config"].read(ruta)
+        MOD_CONTROLL_INI["config"].read(ruta, encoding='latin-1')
         
         SetVar(variable, True)
     except Exception as e:
@@ -93,6 +93,13 @@ if module == "obtenerTodosDatos":
         secciones = config.sections()
         print("Secciones: ", secciones)
         seccion_items = config.items(seccion)
+        # for i in seccion_items:
+        #     try:
+        #         result = i[1].encode('iso-8859-1').decode('utf-8')
+        #         seccion_items[seccion_items.index(i)] = (i[0], result)
+        #     except:
+        #         pass
+
         seccion_dict = dict(seccion_items)
         SetVar(var, seccion_dict)
     except:
