@@ -93,12 +93,12 @@ if module == "obtenerTodosDatos":
         secciones = config.sections()
         print("Secciones: ", secciones)
         seccion_items = config.items(seccion)
-        # for i in seccion_items:
-        #     try:
-        #         result = i[1].encode('iso-8859-1').decode('utf-8')
-        #         seccion_items[seccion_items.index(i)] = (i[0], result)
-        #     except:
-        #         pass
+        for i in seccion_items:
+            try:
+                result = i[1].encode('iso-8859-1').decode('utf-8')
+                seccion_items[seccion_items.index(i)] = (i[0], result)
+            except:
+                pass
 
         seccion_dict = dict(seccion_items)
         SetVar(var, seccion_dict)
