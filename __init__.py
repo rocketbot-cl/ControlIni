@@ -51,13 +51,33 @@ if module == "leerIni":
     ruta = GetParams('content')
     variable = GetParams('variable')
     try:
+        import os
+        
+        # Validar si el archivo existe y se puede abrir
+        if not os.path.exists(ruta):
+            print("El archivo no se ha podido leer o no existe")
+            SetVar(variable, False)
+            raise Exception("El archivo no se ha podido leer o no existe")
+        
+        # Intentar abrir el archivo para verificar que se puede leer
+        try:
+            with open(ruta, 'r', encoding='latin-1'):
+                pass  # Solo verificamos que se puede abrir
+        except:
+            print("El archivo no se ha podido leer o no existe")
+            SetVar(variable, False)
+            raise Exception("El archivo no se ha podido leer o no existe")
+        
+        # Si llegamos aquí, el archivo existe y se puede abrir
         MOD_CONTROLL_INI["ruta"] = ruta
         MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
         MOD_CONTROLL_INI["config"].optionxform = str
         MOD_CONTROLL_INI["config"].read(ruta, encoding='latin-1')
         
         SetVar(variable, True)
+        
     except Exception as e:
+        traceback.print_exc()
         PrintException()
         SetVar(variable, False)
         raise e
