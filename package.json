@@ -7,7 +7,7 @@
         "pr": "Este módulo permite criar, ler, modificar ou obter valores de um arquivo .ini"
     },
     "disclaimer":"THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-    "version":"1.3.4",
+    "version":"1.3.5",
     "license": "MIT",
     "homepage":"http://rocketbot.com",
     "linux": true,
@@ -87,6 +87,7 @@
                             "en": "Name without extension",
                             "pr": "Nome sem extensão"
                         },
+                        "remove_vars": true,
                         "id": "idnombreini",
                         "css": "col-md-12"
                     }
@@ -170,6 +171,7 @@
                             "en": "Variable where the result of the operation will be stored",
                             "pr": "Variável onde o resultado da operação será armazenado"
                         },
+                        "remove_vars": true,
                         "id": "variable",
                         "css": "col-md-12"
                     }
@@ -249,6 +251,7 @@
                             "en": "Data that wants to be obtained. It must go without =.",
                             "pr": "Dados que deseja obter. Deve ir sem =."
                         },
+                        "remove_vars": true,
                         "id": "iddato",
                         "css": "col-md-12"
                     },
@@ -274,6 +277,7 @@
                             "en": "Variable where the result of the operation will be stored",
                             "pr": "Variável onde o resultado da operação será armazenado"
                         },
+                        "remove_vars": true,
                         "id": "idvar",
                         "css": "col-md-12"
                     }
@@ -357,6 +361,7 @@
                             "en": "Variable where the result of the operation will be stored",
                             "pr": "Variável onde o resultado da operação será armazenado"
                         },
+                        "remove_vars": true,
                         "id": "idvar",
                         "css": "col-md-12"
                     }
@@ -456,6 +461,7 @@
                             "en": "New content that the ini data will have.",
                             "pr": "Novo conteúdo que o dado do ini terá."
                         },
+                        "remove_vars": true,
                         "id": "idcontent",
                         "css": "col-md-12"
                     }
@@ -555,6 +561,7 @@
                             "en": "Content of the variable that will be added to the ini file.",
                             "pr": "Conteúdo da variável que será adicionada ao arquivo ini."
                         },
+                        "remove_vars": true,
                         "id": "idcontent",
                         "css": "col-md-12"
                     }
