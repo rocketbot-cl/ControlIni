@@ -1,5 +1,4 @@
-# coding: utf-8
-# pylint: disable=invalid-name
+
 """Base para desarrollo de modulos externos.
 
 Para obtener el modulo/Funcion que se esta llamando:
@@ -25,52 +24,61 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 import configparser
 import traceback
 
-global MOD_CONTROLL_INI #pylint: disable=global-at-module-level
-# global config
-# global configOpen
-# global ruta
+global MOD_CONTROLL_INI 
 
-GetParams = GetParams #pylint: disable=undefined-variable,self-assigning-variable
-SetVar = SetVar #pylint: disable=undefined-variable,self-assigning-variable
-PrintException = PrintException #pylint: disable=undefined-variable,self-assigning-variable
+
+GetParams = GetParams 
+SetVar = SetVar 
+PrintException = PrintException 
 
 try:
-    if not MOD_CONTROLL_INI: #pylint: disable=used-before-assignment
+    if not MOD_CONTROLL_INI: 
         MOD_CONTROLL_INI = {}
 except NameError:
     MOD_CONTROLL_INI = {}
 
 
-#Obtengo el modulo que fueron invocados
-
 module = GetParams("module")
 
 
 if module == "leerIni":
-    # Modulo Leer ini
     ruta = GetParams('content')
     variable = GetParams('variable')
     try:
+        import os
+        
+        if not os.path.exists(ruta):
+            SetVar(variable, False)
+            raise Exception("The file could not be read or does not exist")
+       
+        try:
+            with open(ruta, 'r', encoding='latin-1'):
+                pass  
+        except:
+            SetVar(variable, False)
+            raise Exception("The file could not be read or does not exist")
+        
+      
         MOD_CONTROLL_INI["ruta"] = ruta
         MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
         MOD_CONTROLL_INI["config"].optionxform = str
         MOD_CONTROLL_INI["config"].read(ruta, encoding='latin-1')
         
         SetVar(variable, True)
+        
     except Exception as e:
+        traceback.print_exc()
         PrintException()
         SetVar(variable, False)
         raise e
 
 if module == "obtenerDato":
-    # Modulo Obtener Dato
     seccion = GetParams('idseccion')
     dato = GetParams('iddato')
     var = GetParams('idvar')
     try:
         config = MOD_CONTROLL_INI["config"]
         secciones = config.sections()
-        print("Secciones: ", secciones)
         obtenido = config[seccion][dato]
         try:
             result = obtenido.encode('iso-8859-1').decode('utf-8')
@@ -91,7 +99,6 @@ if module == "obtenerTodosDatos":
     try:
         config = MOD_CONTROLL_INI["config"]
         secciones = config.sections()
-        print("Secciones: ", secciones)
         seccion_items = config.items(seccion)
         for i in seccion_items:
             try:
@@ -105,10 +112,9 @@ if module == "obtenerTodosDatos":
     except:
         PrintException()
         SetVar(var, False)
-        raise Exception(f"Error al obtener todos los datos de la seccion {seccion}")
+        raise Exception(f"Error getting all data for the section {seccion}")
 
 if module == "anadirDato":
-    # Modulo Añadir dato
     config = MOD_CONTROLL_INI["config"]
     ruta = MOD_CONTROLL_INI["ruta"]
     secciones = config.sections()
@@ -123,12 +129,10 @@ if module == "anadirDato":
             config.write(configfile)
     else:
         if seccion in secciones:
-            # Tiene esta seccion
             config.set(seccion, dato, contenido)
             with open(ruta, 'w', encoding='latin-1') as configfile:
                 config.write(configfile)
         else:
-            # NO Tiene esta seccion, se va a crear
             config = configparser.RawConfigParser()
             config.add_section(seccion)
             config.set(seccion, dato, contenido)
@@ -136,7 +140,6 @@ if module == "anadirDato":
                 config.write(configfile)
 
 if module == "modificaDato":
-    # Modulo que modifica un dato en la Varible del Ini
     seccion = GetParams('idseccion')
     dato = GetParams('iddato')
     contenido = GetParams('idcontent')
@@ -155,7 +158,6 @@ if module == "modificaDato":
         raise e
 
 if module == "nuevoIni":
-    # Modulo que crea un nuevo Ini
     nombreini = GetParams('idnombreini')
     ruta = GetParams('content')
 
