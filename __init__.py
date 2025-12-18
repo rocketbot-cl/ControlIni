@@ -1,4 +1,3 @@
-
 """Base para desarrollo de modulos externos.
 
 Para obtener el modulo/Funcion que se esta llamando:
@@ -60,7 +59,7 @@ if module == "leerIni":
         
       
         MOD_CONTROLL_INI["ruta"] = ruta
-        MOD_CONTROLL_INI["config"] = configparser.ConfigParser()
+        MOD_CONTROLL_INI["config"] = configparser.ConfigParser(interpolation=None)
         MOD_CONTROLL_INI["config"].optionxform = str
         MOD_CONTROLL_INI["config"].read(ruta, encoding='latin-1')
         
